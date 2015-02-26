@@ -32,6 +32,8 @@ $chosen-color-font-lighter        : #CCCCCC;
     left: -9999px;
     z-index: 1010;
     width: 100%;
+    border-width: 1px;
+    border-style: solid;
     border-top: 0;
   }
   &.chosen-with-drop .chosen-drop { left: 0; }
@@ -56,6 +58,8 @@ $chosen-color-font-lighter        : #CCCCCC;
 /* @group Single Chosen */
 .chosen-container-single {
   .chosen-single {
+    border-width: 1px;
+    border-style: solid;
     position: relative;
     display: block;
     overflow: hidden;
@@ -113,6 +117,8 @@ $chosen-color-font-lighter        : #CCCCCC;
       outline: 0;
       background: $chosen-color-background $chosen-sprite no-repeat 100% -20px;
       @include background($chosen-sprite no-repeat 100% -20px);
+      border-width: 1px;
+      border-style: solid;
       font-size: 1em;
       font-family: sans-serif;
       line-height: normal;
@@ -249,12 +255,24 @@ $chosen-color-font-lighter        : #CCCCCC;
 
 /* @group Active  */
 .chosen-container-active {
+  .chosen-single {
+    border-width: 1px;
+    border-style: solid;
+  }
   &.chosen-with-drop {
-    .chosen-single div {
-      border-left: none;
-      background: transparent;
-      b { background-position: -18px 2px; }
+    .chosen-single {
+      border-width: 1px;
+      border-style: solid;
+      div {
+        border-left: none;
+        background: transparent;
+        b { background-position: -18px 2px; }
+      }
     }
+  }
+  .chosen-choices {
+    border-width: 1px;
+    border-style: solid;
   }
 }
 /* @end */
