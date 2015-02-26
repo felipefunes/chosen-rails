@@ -5,6 +5,16 @@
 $chosen-sprite: image-url('chosen-sprite.png') !default;
 $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
 
+/* @group Color Variables */
+$chosen-color-border              : #AAAAAA;
+$chosen-color-background          : #FFFFFF;
+$chosen-color-font                : #444444;
+$chosen-color-font-2              : #888888;
+$chosen-color-font-3              : #CCCCCC;
+
+
+/* @end */
+
 /* @group Base */
 .chosen-container {
   position: relative;
@@ -23,18 +33,13 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
     left: -9999px;
     z-index: 1010;
     width: 100%;
-    border: 1px solid #aaa;
+    border: 1px solid $chosen-color-border;
     border-top: 0;
-    background: #fff;
-    box-shadow: 0 4px 5px rgba(#000,.15);
+    background: $chosen-color-background;
+    box-shadow: 0 4px 5px rgba(0,0,0,0.15);
   }
-  &.chosen-with-drop .chosen-drop {
-    left: 0;
-  }
-  a{
-    cursor: pointer;
-  }
-  
+  &.chosen-with-drop .chosen-drop { left: 0; }
+  a { cursor: pointer; }
   .search-choice, .chosen-single{
     .group-name{
       margin-right: 4px;
@@ -42,7 +47,7 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
       white-space: nowrap;
       text-overflow: ellipsis;
       font-weight: normal;
-      color: #999999;
+      color: $chosen-color-font-2;
       &:after {
         content: ":";
         padding-left: 2px;
@@ -61,20 +66,18 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
     overflow: hidden;
     padding: 0 0 0 8px;
     height: 25px;
-    border: 1px solid #aaa;
+    border: 1px solid $chosen-color-border;
     border-radius: 5px;
-    background-color: #fff;
-    @include background(linear-gradient(top, #fff 20%, #f6f6f6 50%, #eee 52%, #f4f4f4 100%));
+    background-color: $chosen-color-background;
+    @include background(linear-gradient(top, $chosen-color-background 20%, #f6f6f6 50%, #eee 52%, #f4f4f4 100%));
     background-clip: padding-box;
-    box-shadow: 0 0 3px #fff inset, 0 1px 1px rgba(#000,.1);
-    color: #444;
+    box-shadow: 0 0 3px $chosen-color-background inset, 0 1px 1px rgba(0,0,0,0.1);
+    color: $chosen-color-font;
     text-decoration: none;
     white-space: nowrap;
     line-height: 24px;
   }
-  .chosen-default {
-    color: #999;
-  }
+  .chosen-default { color: $chosen-color-font-2; }
   .chosen-single span {
     display: block;
     overflow: hidden;
@@ -82,9 +85,7 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  .chosen-single-with-deselect span {
-    margin-right: 38px;
-  }
+  .chosen-single-with-deselect span { margin-right: 38px; }
   .chosen-single abbr {
     position: absolute;
     top: 6px;
@@ -94,13 +95,9 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
     height: 12px;
     background: $chosen-sprite -42px 1px no-repeat;
     font-size: 1px;
-    &:hover {
-      background-position: -42px -10px;
-    }
+    &:hover { background-position: -42px -10px; }
   }
-  &.chosen-disabled .chosen-single abbr:hover {
-    background-position: -42px -10px;
-  }
+  &.chosen-disabled .chosen-single abbr:hover { background-position: -42px -10px; }
   .chosen-single div {
     position: absolute;
     top: 0;
@@ -127,8 +124,8 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
       width: 100%;
       height: auto;
       outline: 0;
-      border: 1px solid #aaa;
-      background: #fff $chosen-sprite no-repeat 100% -20px;
+      border: 1px solid $chosen-color-border;
+      background: $chosen-color-background $chosen-sprite no-repeat 100% -20px;
       @include background($chosen-sprite no-repeat 100% -20px);
       font-size: 1em;
       font-family: sans-serif;
@@ -150,7 +147,7 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
 
 /* @group Results */
 .chosen-container .chosen-results {
-  color: #444;
+  color: $chosen-color-font;
   position: relative;
   overflow-x: hidden;
   overflow-y: auto;
@@ -178,10 +175,10 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
     &.highlighted {
       background-color: #3875d7;
       @include background-image(linear-gradient(#3875d7 20%, #2a62bc 90%));
-      color: #fff;
+      color: $chosen-color-background;
     }
     &.no-results {
-      color: #777;
+      color: $chosen-color-font-2;
       display: list-item;
       background: #f4f4f4;
     }
@@ -211,9 +208,9 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
     width: 100%;
     height: auto !important;
     height: 1%;
-    border: 1px solid #aaa;
-    background-color: #fff;
-    @include background-image(linear-gradient(#eee 1%, #fff 15%));
+    border: 1px solid $chosen-color-border;
+    background-color: $chosen-color-background;
+    @include background-image(linear-gradient(#eee 1%, $chosen-color-background 15%));
     cursor: text;
   }
   .chosen-choices li {
@@ -231,7 +228,7 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
         border: 0 !important;
         background: transparent !important;
         box-shadow: none;
-        color: #999;
+        color: $chosen-color-font-2;
         font-size: 100%;
         font-family: sans-serif;
         line-height: normal;
@@ -242,7 +239,7 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
       position: relative;
       margin: 3px 5px 3px 0;
       padding: 3px 20px 3px 5px;
-      border: 1px solid #aaa;
+      border: 1px solid $chosen-color-border;
       max-width: 100%;
       border-radius: 3px;
       background-color: #eeeeee;
@@ -250,13 +247,11 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
       background-size: 100% 19px;
       background-repeat: repeat-x;
       background-clip: padding-box;
-      box-shadow: 0 0 2px #fff inset, 0 1px 0 rgba(#000,.05);
-      color: #333;
+      box-shadow: 0 0 2px $chosen-color-background inset, 0 1px 0 rgba(#000,.05);
+      color: $chosen-color-font;
       line-height: 13px;
       cursor: default;
-      span {
-        word-wrap: break-word;
-      }
+      span { word-wrap: break-word; }
       .search-choice-close {
         position: absolute;
         top: 4px;
@@ -276,13 +271,11 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
       border: 1px solid #ccc;
       background-color: #e4e4e4;
       @include background-image(linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eee 100%));
-      color: #666;
+      color: $chosen-color-font-2;
     }
     &.search-choice-focus {
       background: #d4d4d4;
-      .search-choice-close {
-        background-position: -42px -10px;
-      }
+      .search-choice-close { background-position: -42px -10px; }
     }
   }
   .chosen-results {
@@ -291,7 +284,7 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
   }
   .chosen-drop .result-selected {
     display: list-item;
-    color: #ccc;
+    color: $chosen-color-font-3;
     cursor: default;
   }
 }
@@ -305,28 +298,24 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
   }
   &.chosen-with-drop{
     .chosen-single {
-      border: 1px solid #aaa;
+      border: 1px solid $chosen-color-border;
       -moz-border-radius-bottomright: 0;
       border-bottom-right-radius: 0;
       -moz-border-radius-bottomleft: 0;
       border-bottom-left-radius: 0;
-      @include background-image(linear-gradient(#eee 20%, #fff 80%));
-      box-shadow: 0 1px 0 #fff inset;
+      @include background-image(linear-gradient(#eee 20%, $chosen-color-background 80%));
+      box-shadow: 0 1px 0 $chosen-color-background inset;
     }
     .chosen-single div {
       border-left: none;
       background: transparent;
-      b {
-        background-position: -18px 2px;
-      }
+      b { background-position: -18px 2px; }
     }
   }
   .chosen-choices {
     border: 1px solid #5897fb;
     box-shadow: 0 0 5px rgba(#000,.3);
-    li.search-field input[type="text"] {
-      color: #222 !important;
-    }
+    li.search-field input[type="text"] { color: $chosen-color-font !important; }
   }
 }
 /* @end */
@@ -335,12 +324,8 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
 .chosen-disabled {
   opacity: 0.5 !important;
   cursor: default;
-  .chosen-single {
-    cursor: default;
-  }
-  .chosen-choices .search-choice .search-choice-close {
-    cursor: default;
-  }
+  .chosen-single { cursor: default; }
+  .chosen-choices .search-choice .search-choice-close { cursor: default; }
 }
 /* @end */
 
@@ -356,9 +341,7 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
     margin-left: 26px;
     direction: rtl;
   }
-  .chosen-single-with-deselect span {
-    margin-left: 38px;
-  }
+  .chosen-single-with-deselect span { margin-left: 38px; }
   .chosen-single div {
     right: auto;
     left: 3px;
@@ -369,9 +352,7 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
   }
   .chosen-choices li {
     float: right;
-    &.search-field input[type="text"] {
-      direction: rtl;
-    }
+    &.search-field input[type="text"] { direction: rtl; }
     &.search-choice {
       margin: 3px 5px 3px 0;
       padding: 3px 5px 3px 19px;
@@ -382,9 +363,7 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
     }
   }
   &.chosen-container-single-nosearch .chosen-search,
-  .chosen-drop {
-    left: 9999px;
-  }
+  .chosen-drop { left: 9999px; }
   &.chosen-container-single .chosen-results {
     margin: 0 0 4px 4px;
     padding: 0 4px 0 0;
@@ -393,23 +372,17 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
     padding-right: 15px;
     padding-left: 0;
   }
-  &.chosen-container-active.chosen-with-drop .chosen-single div {
-    border-right: none;
-  }
+  &.chosen-container-active.chosen-with-drop .chosen-single div { border-right: none; }
   .chosen-search input[type="text"] {
     padding: 4px 5px 4px 20px;
-    background: #fff $chosen-sprite no-repeat -30px -20px;
+    background: $chosen-color-background $chosen-sprite no-repeat -30px -20px;
     @include background($chosen-sprite no-repeat -30px -20px);
     direction: rtl;
   }
   &.chosen-container-single{
-    .chosen-single div b {
-      background-position: 6px 2px;
-    }
+    .chosen-single div b { background-position: 6px 2px; }
     &.chosen-with-drop{
-      .chosen-single div b {
-        background-position: -12px 2px;
-      }
+      .chosen-single div b { background-position: -12px 2px; }
     }
   }
 }
