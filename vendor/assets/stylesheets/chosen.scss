@@ -5,15 +5,6 @@
 $chosen-sprite                    : image-url('chosen-sprite.png') !default;
 $chosen-sprite-retina             : image-url('chosen-sprite@2x.png') !default;
 
-/* @group Color Variables */
-$chosen-color-border              : #AAAAAA;
-$chosen-color-background          : #FFFFFF;
-$chosen-color-active              : #5897FB;
-$chosen-color-font                : #444444;
-$chosen-color-font-light          : #888888;
-$chosen-color-font-lighter        : #CCCCCC;
-
-
 /* @end */
 
 /* @group Base */
@@ -26,6 +17,7 @@ $chosen-color-font-lighter        : #CCCCCC;
   *display: inline;
   @include user-select(none);
   * { @include box-sizing(border-box); }
+  background-color: #FFFFFF;
   .chosen-drop {
     position: absolute;
     top: 100%;
@@ -35,6 +27,7 @@ $chosen-color-font-lighter        : #CCCCCC;
     border-width: 1px;
     border-style: solid;
     border-top: 0;
+    background-color: #FFFFFF;
   }
   &.chosen-with-drop .chosen-drop { left: 0; }
   a { cursor: pointer; }
@@ -115,7 +108,9 @@ $chosen-color-font-lighter        : #CCCCCC;
       width: 100%;
       height: auto;
       outline: 0;
-      background: $chosen-color-background $chosen-sprite no-repeat 100% -20px;
+      background-image: $chosen-sprite;
+      background-repeat: no-repeat;
+      background-position: 100% -20px;
       @include background($chosen-sprite no-repeat 100% -20px);
       border-width: 1px;
       border-style: solid;
@@ -166,6 +161,9 @@ $chosen-color-font-lighter        : #CCCCCC;
       font-weight: bold;
       cursor: default;
     }
+    &.no-results {
+      display: list-item;
+    }
     &.group-option { padding-left: 15px; }
     em {
       font-style: normal;
@@ -186,6 +184,8 @@ $chosen-color-font-lighter        : #CCCCCC;
     height: auto !important;
     height: 1%;
     cursor: text;
+    border-width: 1px;
+    border-style: solid;
     li {
       float: left;
       list-style: none;
@@ -211,9 +211,13 @@ $chosen-color-font-lighter        : #CCCCCC;
         position: relative;
         margin: 3px 5px 3px 0;
         padding: 3px 20px 3px 5px;
-        border: 1px solid $chosen-color-border;
+        border-width: 1px;
+        border-style: solid;
         max-width: 100%;
         background-color: #eeeeee;
+        background-size: 100% 19px;
+        background-repeat: repeat-x;
+        background-clip: padding-box;
         line-height: 13px;
         cursor: default;
         span { word-wrap: break-word; }
@@ -231,9 +235,10 @@ $chosen-color-font-lighter        : #CCCCCC;
       }
       &.search-choice-disabled {
         padding-right: 5px;
-        border: 1px solid $chosen-color-border;
+        border-width: 1px;
+        border-style: solid;
         background-color: #e4e4e4;
-        color: $chosen-color-font-light;
+        color: #888888;
       }
       &.search-choice-focus {
         background: #d4d4d4;
@@ -247,7 +252,7 @@ $chosen-color-font-lighter        : #CCCCCC;
   }
   .chosen-drop .result-selected {
     display: list-item;
-    color: $chosen-color-font-lighter;
+    color: #888888;
     cursor: default;
   }
 }
@@ -332,7 +337,9 @@ $chosen-color-font-lighter        : #CCCCCC;
   &.chosen-container-active.chosen-with-drop .chosen-single div { border-right: none; }
   .chosen-search input[type="text"] {
     padding: 4px 5px 4px 20px;
-    background: $chosen-color-background $chosen-sprite no-repeat -30px -20px;
+    background-image: $chosen-sprite no-repeat -30px -20px;
+    background-repeat: no-repeat;
+    background-position: -30px -20px;
     @include background($chosen-sprite no-repeat -30px -20px);
     direction: rtl;
   }

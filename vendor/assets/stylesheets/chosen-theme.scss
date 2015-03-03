@@ -1,17 +1,7 @@
 @import "compass/css3/box-sizing";
 @import "compass/css3/images";
 @import "compass/css3/user-interface";
-
-$chosen-sprite                    : image-url('chosen-sprite.png') !default;
-$chosen-sprite-retina             : image-url('chosen-sprite@2x.png') !default;
-
-/* @group Color Variables */
-$chosen-color-border              : #AAAAAA;
-$chosen-color-background          : #FFFFFF;
-$chosen-color-active              : #5897FB;
-$chosen-color-font                : #444444;
-$chosen-color-font-light          : #888888;
-$chosen-color-font-lighter        : #CCCCCC;
+@import "variables";
 
 
 /* @group Base */
@@ -32,60 +22,99 @@ $chosen-color-font-lighter        : #CCCCCC;
 .chosen-container-single {
   .chosen-single {
     border-color: $chosen-color-border;
-    border-radius: 5px;
+    border-radius: $chosen-radio-input;
     background-color: $chosen-color-background;
-    @include background(linear-gradient(top, $chosen-color-background 20%, #f6f6f6 50%, #eee 52%, #f4f4f4 100%));
+    @include background(
+      linear-gradient(
+        top, 
+        $chosen-color-background 20%, 
+        $chosen-color-gray-7 50%, 
+        $chosen-color-gray-4 52%, 
+        $chosen-color-gray-6 100%
+      )
+    );
     background-clip: padding-box;
     box-shadow: 0 0 3px $chosen-color-background inset, 0 1px 1px rgba(0,0,0,0.1);
     color: $chosen-color-font;
   }
   .chosen-default { color: $chosen-color-font-light; }
   .chosen-search {
-    input[type="text"] { border-color: $chosen-color-border; }
+    input[type="text"] { 
+      border-color: $chosen-color-border;
+      background-color: $chosen-color-background
+    }
   }
   .chosen-drop {
-    border-radius: 0 0 4px 4px;
+    border-radius: $chosen-radio-dropdown;
   }
 }
 /* @end */
 
-/* @group Results */ /*pending colors variables*/
+/* @group Results */ 
 .chosen-container .chosen-results {
   color: $chosen-color-font;
   li.disabled-result { color: $chosen-color-font-lighter; }
   li.highlighted {
-    background-color: #3875d7;
-    @include background-image(linear-gradient(#3875d7 20%, #2a62bc 90%));
+    background-color: $chosen-color-active;
+    @include background-image(
+      linear-gradient(
+        $chosen-color-active 20%, 
+        $chosen-color-active-light 90%
+        )
+      );
     color: $chosen-color-background;
   }
   li.no-results {
     color: $chosen-color-font-light;
-    display: list-item;
-    background: #f4f4f4;
+    background: $chosen-color-gray-6;
   }
 }
 /* @end */
 
-/* @group Multi Chosen */ /*pending colors variables*/
+/* @group Multi Chosen */ 
 .chosen-container-multi {
   .chosen-choices {
-    border: 1px solid $chosen-color-border;
+    border-color: $chosen-color-border;
     background-color: $chosen-color-background;
-    @include background-image(linear-gradient(#eee 1%, $chosen-color-background 15%));
+    @include background-image(
+      linear-gradient(
+        $chosen-color-gray-4 1%, 
+        $chosen-color-background 15%
+      )
+    );
     li {
       &.search-field {
         input[type="text"] { color: $chosen-color-font-light; }
       }
       &.search-choice {
-        border-radius: 3px;
-        @include background-image(linear-gradient(#f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eee 100%));
-        background-size: 100% 19px;
-        background-repeat: repeat-x;
-        background-clip: padding-box;
-        box-shadow: 0 0 2px $chosen-color-background inset, 0 1px 0 rgba(#000,.05);
+        border-color: $chosen-color-border;
+        border-radius: $chosen-radio-choice;
+        @include background-image(
+          linear-gradient(
+            $chosen-color-gray-6 20%, 
+            $chosen-color-gray-5 50%, 
+            $chosen-color-gray-3 52%, 
+            $chosen-color-gray-4 100%
+          )
+        );
+        box-shadow: 0 0 2px $chosen-color-background inset, 0 1px 0 rgba(0,0,0,.05);
         color: $chosen-color-font;
       }
-      &.search-choice-disabled { @include background-image(linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eee 100%)); }
+      &.search-choice-disabled {
+        background-color: $chosen-color-gray-2;
+        color: $chosen-color-font-light;
+        border-color: $chosen-color-border;
+        @include background-image(
+          linear-gradient(
+            top, 
+            $chosen-color-gray-6 20%, 
+            $chosen-color-gray-5 50%, 
+            $chosen-color-gray-3 52%, 
+            $chosen-color-gray-4 100%
+          )
+        );
+      }
+      &.search-choice-focus { background: $chosen-color-gray-1; }
     }
   }
   .chosen-drop .result-selected { color: $chosen-color-font-lighter; }
@@ -95,7 +124,7 @@ $chosen-color-font-lighter        : #CCCCCC;
 /* @group Active  */
 .chosen-container-active {
   .chosen-single {
-    border-color: $chosen-color-active;
+    border-color: $chosen-color-active-dark;
     box-shadow: 0 0 5px rgba(0,0,0,.3);
   }
   &.chosen-with-drop {
@@ -105,35 +134,25 @@ $chosen-color-font-lighter        : #CCCCCC;
       border-bottom-right-radius: 0;
       -moz-border-radius-bottomleft: 0;
       border-bottom-left-radius: 0;
-      @include background-image(linear-gradient(#eee 20%, $chosen-color-background 80%));
+      @include background-image(
+        linear-gradient(
+          $chosen-color-gray-4 20%, 
+          $chosen-color-background 80%
+        )
+      );
       box-shadow: 0 1px 0 $chosen-color-background inset;
     }
   }
   .chosen-choices {
-    border-color: $chosen-color-active;
+    border-color: $chosen-color-active-dark;
     box-shadow: 0 0 5px rgba(0,0,0,.3);
     li.search-field input[type="text"] { color: $chosen-color-font !important; }
   }
 }
 /* @end */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* @group Right to Left */
+.chosen-rtl {
+  .chosen-search input[type="text"] { background-color: $chosen-color-background; }
+}
+/* @end */
